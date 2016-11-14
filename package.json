@@ -1,0 +1,40 @@
+{
+  "name": "eniki",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot --port 8080 --content-base src/main/resources/static",
+    "build": "webpack --optimize-minimize --optimize-dedupe --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heivo/eniki.git"
+  },
+  "author": "ivo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heivo/eniki/issues"
+  },
+  "homepage": "https://github.com/heivo/eniki#readme",
+  "dependencies": {
+    "axios": "^0.15.2",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "html-webpack-plugin": "^2.24.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
