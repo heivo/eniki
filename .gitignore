@@ -1,6 +1,7 @@
 .gradle
 .idea
 /build/
+/out/
 /gradle/
 /node_modules/
 /src/main/resources/static/

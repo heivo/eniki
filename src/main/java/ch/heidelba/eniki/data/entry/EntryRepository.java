@@ -1,4 +1,4 @@
-package ch.heidelba.eniki.data;
+package ch.heidelba.eniki.data.entry;
 
 import org.springframework.data.repository.CrudRepository;
 
