@@ -1,23 +1,24 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import axios from 'axios'
-
-class App extends React.Component {
-    render() {
-        return (
-            <div>Test 123!</div>
-        )
-    }
-};
+import React from "react";
+import ReactDOM from "react-dom";
+import {createStore, applyMiddleware, compose} from "redux";
+import {Provider} from "react-redux";
+import thunk from "redux-thunk";
+import {Router, browserHistory, hashHistory} from "react-router";
+import { syncHistoryWithStore } from 'react-router-redux'
+import reducer from "./modules/reducer";
+import routes from "./routes";
 
 const mountPoint = document.createElement('div');
 document.body.appendChild(mountPoint);
 
-ReactDOM.render(<App />, mountPoint);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const middleware = composeEnhancers(applyMiddleware(thunk));
+const store = createStore(reducer, middleware);
+const history = syncHistoryWithStore(browserHistory, store);
 
-axios.get('/api/entries')
-    .then(response => {
-        console.log(response);
-    }).catch(err => {
-        console.error(err);
-    });
+ReactDOM.render(
+    <Provider store={store}>
+        <Router routes={routes} history={history} />
+    </Provider>,
+    mountPoint
+);

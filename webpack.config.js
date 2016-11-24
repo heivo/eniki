@@ -19,7 +19,8 @@ module.exports = {
                 loader: 'babel',
                 query: {
                     cacheDirectory: true,
-                    presets: ['es2015', 'react', 'stage-0']
+                    presets: ['es2015', 'react', 'stage-0'],
+                    plugins: ["transform-decorators-legacy"]
                 }
             }
         ]
@@ -28,11 +29,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Eniki'
         })
-    //     new webpack.DefinePlugin({
-    //         'process.env': {
-    //             'NODE_ENV': JSON.stringify('production')
-    //         }
-    //     })
     ],
     devServer: {
         proxy: {
@@ -40,6 +36,7 @@ module.exports = {
                 target: 'http://localhost:8081',
                 secure: true
             }
-        }
+        },
+        historyApiFallback: true
     }
 };
