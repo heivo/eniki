@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@EnableWebMvc
+//@EnableWebMvc
 @SpringBootApplication
 public class EnikiApplication implements ApplicationListener<ContextRefreshedEvent> {
 

@@ -28,16 +28,23 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		Entry entry = new Entry();
-		entry.setTitle("test");
-		entry.setUsername("test");
-		entry.setPassword("asdf123");
-		entryRepository.save(entry);
+
+		addEntry("Facebook", "ihe", "geheim");
+		addEntry("Google", "ihe", "geheim123");
+		addEntry("GitHub", "heivo", "lol");
 
 		Account account = new Account();
 		account.setUsername("ihe");
 		account.setPassword(passwordEncoder.encode("test"));
 		accountRepository.save(account);
+	}
+
+	private void addEntry(String title, String username, String password) {
+		Entry entry = new Entry();
+		entry.setTitle(title);
+		entry.setUsername(username);
+		entry.setPassword(password);
+		entryRepository.save(entry);
 	}
 
 }

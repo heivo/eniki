@@ -7,7 +7,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 
 @Configuration
-@EnableResourceServer
+//@EnableResourceServer TODO disabled for development
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Override

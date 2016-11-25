@@ -1,5 +1,6 @@
 package ch.heidelba.eniki.data.entry;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -19,6 +20,7 @@ public class Entry {
 
 	private String username;
 
+	@JsonIgnore
 	private String password;
 
 	private String url;

@@ -5,6 +5,7 @@ spring:
   data:
     rest:
       base-path: /api
+      default-media-type: application/json
 
 server:
   port: 8081

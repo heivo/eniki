@@ -5,8 +5,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/main/js/app.js',
     devtool: 'sourcemaps',
-    cache: true,
-    debug: true,
     output: {
         path: path.join(__dirname, 'src/main/resources/static'),
         filename: 'bundle.js'
@@ -16,7 +14,7 @@ module.exports = {
             {
                 test: path.join(__dirname, '.'),
                 exclude: /(node_modules)/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 query: {
                     cacheDirectory: true,
                     presets: ['es2015', 'react', 'stage-0'],
@@ -31,12 +29,14 @@ module.exports = {
         })
     ],
     devServer: {
+        inline: true,
+        hot: true,
         proxy: {
             '/api': {
                 target: 'http://localhost:8081',
                 secure: true
             }
         },
-        historyApiFallback: true
+        // historyApiFallback: true
     }
 };

@@ -14,11 +14,11 @@ const INVALIDATE_TOKEN_SUCCESS = 'eniki/user/INVALIDATE_TOKEN_SUCCESS';
 const INVALIDATE_TOKEN_FAILURE = 'eniki/user/INVALIDATE_TOKEN_FAILURE';
 
 const INITIAL_STATE = {
-    username: null,
+    username: undefined,
     authenticated: false,
-    accessToken: null,
-    refreshToken: null,
-    expires: null,
+    accessToken: undefined,
+    refreshToken: undefined,
+    expires: undefined,
     error: null
 };
 
@@ -41,10 +41,10 @@ export const requestToken = (username, password) => dispatch => {
         type: REQUEST_TOKEN,
         payload: {username}
     });
-    axios.post(`/oauth/token?grant_type=password&username=${username}&password=${password}`)
+    return axios.post(`/oauth/token?grant_type=password&username=${username}&password=${password}`)
         .then(response => {
             const {data} = response;
-            dispatch({
+            return dispatch({
                 type: REQUEST_TOKEN_SUCCESS,
                 payload: {
                     username: data.username,
@@ -55,7 +55,7 @@ export const requestToken = (username, password) => dispatch => {
             });
         }).catch(err => {
             console.error(err);
-            dispatch({
+            return dispatch({
                 type: REQUEST_TOKEN_FAILURE,
                 payload: {
                     username: username,

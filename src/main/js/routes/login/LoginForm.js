@@ -1,10 +1,9 @@
-import React, {Component, PropTypes} from 'react';
-import {Route, Link} from "react-router";
+import React, {Component, PropTypes} from "react";
 
 export default class LoginForm extends Component {
 
     static propTypes = {
-        onSubmit: PropTypes.func.isRequired
+        onLogin: PropTypes.func.isRequired
     };
 
     constructor(props) {
@@ -14,16 +13,16 @@ export default class LoginForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.onSubmit(this.usernameElem.value, this.passwordElem.value);
+        this.props.onLogin(this.usernameInput.value, this.passwordInput.value);
     }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>Benutzer:</label>
-                <input type="text" ref={input => this.usernameElem = input} />
+                <input type="text" ref={input => this.usernameInput = input} />
                 <label>Passwort:</label>
-                <input type="password" ref={input => this.passwordElem = input} />
+                <input type="password" ref={input => this.passwordInput = input} />
                 <button type="submit">Login</button>
             </form>
         );

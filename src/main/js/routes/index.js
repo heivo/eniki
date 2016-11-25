@@ -1,23 +1,17 @@
-import React from 'react';
-import {Route, Link} from "react-router";
-import LoginPage from './login/LoginPage';
-
-class App extends React.Component {
-    render() {
-        return (
-            <div>
-                App
-                <Link to="login" onlyActiveOnIndex={true}>
-                    To Login
-                </Link>
-                {this.props.children}
-            </div>
-        )
-    }
-};
+import React from "react";
+import {Route, IndexRoute} from "react-router";
+import AppRoot from "./AppRoot";
+import LoginPageContainer from "./login/LoginPageContainer";
+import EntriesContainer from "./entries/EntriesContainer";
+import EntryListContainer from "./entries/list/EntryListContainer";
+import EntryDetailsContainer from "./entries/details/EntryDetailsContainer";
 
 export default (
-    <Route path="/" component={App}>
-        <Route path="login" component={LoginPage} />
+    <Route path="/" component={AppRoot}>
+        <Route path="login" component={LoginPageContainer} />
+        <Route path="entries" component={EntriesContainer}>
+            <IndexRoute component={EntryListContainer} />
+            <Route path=":entryId" component={EntryDetailsContainer} />
+        </Route>
     </Route>
 );
