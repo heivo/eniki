@@ -7,6 +7,7 @@ module.exports = {
     devtool: 'sourcemaps',
     output: {
         path: path.join(__dirname, 'src/main/resources/static'),
+        publicPath: 'js',
         filename: 'bundle.js'
     },
     module: {
@@ -20,14 +21,12 @@ module.exports = {
                     presets: ['es2015', 'react', 'stage-0'],
                     plugins: ["transform-decorators-legacy"]
                 }
-            }
+            },
+            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.png$/, loader: "url-loader?limit=100000" },
+            { test: /\.jpg$/, loader: "file-loader" }
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Eniki'
-        })
-    ],
     devServer: {
         inline: true,
         hot: true,

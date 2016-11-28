@@ -13,9 +13,8 @@ export default class EntryList extends Component {
         const {entries, onSelectEntry} = this.props;
         return (
             <div>
-                <h3>EntryList</h3>
-                <table>
-                    <thead>
+                <table className="table table-sm">
+                    <thead className="thead-default">
                         <tr>
                             <th>Title</th>
                             <th>Username</th>

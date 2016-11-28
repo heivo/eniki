@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from "react";
 
-export default class SearchBar extends Component {
+export default class SearchForm extends Component {
 
     static propTypes = {
         searchText: PropTypes.string.isRequired,
@@ -24,13 +24,15 @@ export default class SearchBar extends Component {
     render() {
         const {searchText} = this.props;
         return (
-            <div style={{border: '1px solid gray'}}>
-                <form onSubmit={this.handleSubmit}>
-                    <h4>SearchBar</h4>
-                    <label>Search</label>
-                    <input type="text" defaultValue={searchText} ref={input => this.searchInput = input} />
-                </form>
-            </div>
+            <form onSubmit={this.handleSubmit} className="form-inline float-xs-right">
+                <input
+                    type="text"
+                    defaultValue={searchText}
+                    ref={input => this.searchInput = input}
+                    className="form-control"
+                    placeholder="Search Entries..." />
+                <button className="btn btn-outline-success" type="submit">Search</button>
+            </form>
         )
     }
 }

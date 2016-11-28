@@ -8,6 +8,9 @@ import {syncHistoryWithStore, routerMiddleware} from "react-router-redux";
 import reducer from "./modules/reducer";
 import routes from "./routes";
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 const mountPoint = document.createElement('div');
 document.body.appendChild(mountPoint);
 
